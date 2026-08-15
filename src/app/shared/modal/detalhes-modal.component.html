@@ -1,0 +1,79 @@
+<div class="detalhes-container">
+  <div class="header-modal">
+    <h2>Detalhes da Promoção</h2>
+    <button mat-icon-button (click)="dialogRef.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="destaque-destino">
+    <img [src]="data.voo.imagem" [alt]="data.voo.destino">
+    <div class="titulo-overlay">
+      <h3>{{ data.voo.destino }}</h3>
+      <p>Vôo saindo de {{ data.voo.origem }}</p>
+    </div>
+  </div>
+
+  <div class="conteudo-modal">
+    <div class="info-voo">
+      <div class="detalhe-linha">
+        <mat-icon>flight_takeoff</mat-icon>
+        <div>
+          <strong>Ida:</strong> {{ data.voo.dataIda | date:'dd/MM/yyyy' }}
+        </div>
+      </div>
+      <div class="detalhe-linha" *ngIf="data.voo.dataVolta">
+        <mat-icon>flight_land</mat-icon>
+        <div>
+          <strong>Volta:</strong> {{ data.voo.dataVolta | date:'dd/MM/yyyy' }}
+        </div>
+      </div>
+      <div class="detalhe-linha">
+        <mat-icon>schedule</mat-icon>
+        <div>
+          <strong>Duração do vôo:</strong> {{ data.voo.duracao }}
+        </div>
+      </div>
+      <div class="detalhe-linha">
+        <mat-icon>business</mat-icon>
+        <div>
+          <strong>Companhia aérea:</strong> {{ data.voo.ciaAerea }}
+        </div>
+      </div>
+      <div class="detalhe-linha">
+        <mat-icon>work</mat-icon>
+        <div>
+          <strong>Bagagem:</strong> {{ data.voo.bagagem }}
+        </div>
+      </div>
+      <div class="detalhe-linha">
+        <mat-icon>airline_seat_recline_normal</mat-icon>
+        <div>
+          <strong>Classe selecionada:</strong> {{ data.categoria }}
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="calculo-valores">
+      <h4>Resumo dos Passageiros</h4>
+      <ul>
+        <li>Adultos: <strong>{{ data.adultos }}</strong></li>
+        <li *ngIf="data.criancas > 0">Crianças: <strong>{{ data.criancas }}</strong></li>
+        <li *ngIf="data.bebes > 0">Bebês: <strong>{{ data.bebes }}</strong></li>
+      </ul>
+
+      <div class="preco-final">
+        <span class="label">Preço Total Estimado:</span>
+        <span class="valor">{{ precoTotal | currency:'BRL':'symbol':'1.2-2' }}</span>
+      </div>
+      <p class="nota-tarifas">*Tarifas e taxas inclusas na simulação.</p>
+    </div>
+  </div>
+
+  <div class="botoes-acao">
+    <button mat-stroked-button (click)="dialogRef.close()">CANCELAR</button>
+    <button mat-flat-button color="primary" (click)="simularReserva()">SIMULAR RESERVA</button>
+  </div>
+</div>

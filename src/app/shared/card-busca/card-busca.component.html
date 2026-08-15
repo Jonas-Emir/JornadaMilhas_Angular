@@ -1,14 +1,41 @@
 <mat-card class="card-busca">
-  <img mat-card-image
-    src="assets/imagens/Veneza.png" alt="Imagem de Veneza">
+  <div class="image-wrapper">
+    <img mat-card-image [src]="voo.imagem" [alt]="'Imagem de ' + voo.destino">
+    <span class="classe-badge">{{ voo.classe }}</span>
+  </div>
+  
   <mat-card-content>
-    <ul>
-      <li>Veneza</li>
-      <li>R$ 500</li>
-    </ul>
+    <div class="card-header">
+      <div class="destino-wrapper">
+        <mat-icon class="icon-location">location_on</mat-icon>
+        <span class="destino-nome">{{ voo.destino }}</span>
+      </div>
+      <div class="origem-wrapper">
+        <span>Saindo de <strong>{{ voo.origem }}</strong></span>
+      </div>
+    </div>
+
+    <div class="detalhes-simplificados">
+      <div class="detalhe-item">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ voo.dataIda | date:'dd/MM/yyyy' }}</span>
+      </div>
+      <div class="detalhe-item">
+        <mat-icon>schedule</mat-icon>
+        <span>{{ voo.duracao }}</span>
+      </div>
+    </div>
+    
+    <div class="preco-wrapper">
+      <span class="preco-label">A partir de</span>
+      <span class="preco-valor">{{ voo.preco | currency:'BRL':'symbol':'1.2-2' }}</span>
+    </div>
   </mat-card-content>
+  
   <mat-card-actions>
-    <button mat-flat-button color="primary">VER DETALHES</button>
+    <button mat-flat-button color="primary" (click)="onVerDetalhes()">
+      VER DETALHES <mat-icon class="btn-icon">arrow_forward</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>
 

@@ -1,27 +1,74 @@
 <section class="homepage">
-  <app-banner
-    src="assets/imagens/banner-homepage.png"
-    alt="Banner da aplicação Jornada"
-  ></app-banner>
-  <app-container>
-    <app-form-busca></app-form-busca>
-    <h2>Promoções</h2>
-    <div class="card-wrapper">
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
-      <app-card-busca></app-card-busca>
+  <div class="hero-container">
+    <app-banner
+      src="assets/imagens/banner-homepage.png"
+      alt="Banner da aplicação Jornada"
+    ></app-banner>
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <h1>Transforme suas Milhas em Dinheiro</h1>
+        <p>Venda suas milhas acumuladas com a melhor cotação do mercado e receba via Pix em minutos de forma rápida e segura!</p>
+        <div class="hero-actions">
+          <button mat-flat-button color="accent" class="cta-button" routerLink="/vender-milhas">
+            <mat-icon>monetization_on</mat-icon> VENDER MILHAS AGORA
+          </button>
+          <button type="button" mat-stroked-button class="cta-secondary" (click)="abrirComoFunciona()">
+            <mat-icon>info</mat-icon> COMO FUNCIONA
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
+  <app-container>
+    <app-form-busca (pesquisar)="onPesquisar($event)"></app-form-busca>
+
+    <h2>Promoções</h2>
+    <div class="card-wrapper" *ngIf="voos.length > 0">
+      <app-card-busca
+        *ngFor="let v of voos"
+        [voo]="v"
+        (verDetalhes)="abrirDetalhes(v)"
+      ></app-card-busca>
+    </div>
+
+    <div class="no-results" *ngIf="voos.length === 0">
+      <mat-icon>sentiment_dissatisfied</mat-icon>
+      <h3>Nenhum vôo encontrado</h3>
+      <p>Tente buscar por outras cidades de Origem ou Destino.</p>
+      <button mat-stroked-button color="primary" (click)="carregarVoos()">VER TODAS AS PROMOÇÕES</button>
+    </div>
+
+    <!-- Simulações Recentes Section -->
+    <div class="simulacoes-secao" *ngIf="simulacoes.length > 0">
+      <div class="simulacoes-header">
+        <h2>Minhas Simulações Recentes</h2>
+        <button mat-button color="warn" (click)="limparHistorico()">
+          <mat-icon>delete_sweep</mat-icon> LIMPAR HISTÓRICO
+        </button>
+      </div>
+      <div class="simulacoes-lista">
+        <div class="simulacao-card" *ngFor="let sim of simulacoes">
+          <div class="sim-topo">
+            <span class="sim-destino">{{ sim.voo.destino }}</span>
+            <span class="sim-preco">{{ sim.precoTotal | currency:'BRL':'symbol':'1.2-2' }}</span>
+          </div>
+          <div class="sim-detalhes">
+            <span>De: {{ sim.voo.origem }}</span> |
+            <span>Ida: {{ sim.voo.dataIda | date:'dd/MM/yyyy' }}</span> |
+            <span>Passageiros: {{ sim.adultos + sim.criancas + sim.bebes }}</span> |
+            <span>Classe: {{ sim.categoria }}</span>
+          </div>
+          <div class="sim-data">Simulado em: {{ sim.dataSimulacao | date:'dd/MM/yyyy HH:mm' }}</div>
+        </div>
+      </div>
+    </div>
+
     <h2>Depoimentos</h2>
     <div class="card-wrapper">
-      <app-card-depoimento></app-card-depoimento>
-      <app-card-depoimento></app-card-depoimento>
-      <app-card-depoimento></app-card-depoimento>
+      <app-card-depoimento
+        *ngFor="let dep of depoimentos"
+        [depoimentoItem]="dep"
+      ></app-card-depoimento>
     </div>
   </app-container>
   <app-banner
@@ -29,3 +76,4 @@
     alt="Banner da aplicação Jornada"
   ></app-banner>
 </section>
+

@@ -1,0 +1,48 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <h2>Como Funciona a Venda de Milhas?</h2>
+    <button mat-icon-button (click)="dialogRef.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <p class="intro">Vender suas milhas com a Jornada Milhas é simples, seguro e leva menos de 5 minutos. Siga o passo a passo:</p>
+    
+    <div class="passos-lista">
+      <div class="passo-item">
+        <div class="passo-icone">
+          <mat-icon>calculate</mat-icon>
+        </div>
+        <div class="passo-conteudo">
+          <h3>1. Realize a Simulação</h3>
+          <p>Informe o seu programa de milhas e a quantidade acumulada para ver instantaneamente a nossa cotação atualizada.</p>
+        </div>
+      </div>
+
+      <div class="passo-item">
+        <div class="passo-icone">
+          <mat-icon>assignment_turned_in</mat-icon>
+        </div>
+        <div class="passo-conteudo">
+          <h3>2. Preencha seus Dados</h3>
+          <p>Informe seu nome, e-mail de contato e a chave Pix onde deseja receber o pagamento de sua simulação.</p>
+        </div>
+      </div>
+
+      <div class="passo-item">
+        <div class="passo-icone">
+          <mat-icon>pix</mat-icon>
+        </div>
+        <div class="passo-conteudo">
+          <h3>3. Receba em sua Conta</h3>
+          <p>Após a simulação e aprovação, o dinheiro é depositado diretamente em sua conta via Pix em poucos minutos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button mat-flat-button color="primary" (click)="dialogRef.close(true)">ENTENDI</button>
+  </div>
+</div>

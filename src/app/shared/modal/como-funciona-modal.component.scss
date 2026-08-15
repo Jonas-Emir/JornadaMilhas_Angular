@@ -1,0 +1,88 @@
+.modal-container {
+  padding: 24px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  color: #334155;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e1b4b;
+    }
+  }
+
+  .modal-body {
+    .intro {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    .passos-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .passo-item {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+
+        .passo-icone {
+          background: #f3e8ff;
+          color: #6200ee;
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+
+          mat-icon {
+            font-size: 24px;
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .passo-conteudo {
+          h3 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #1e293b;
+          }
+
+          p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #64748b;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+
+    button {
+      border-radius: 20px !important;
+      font-weight: 600;
+      padding: 0 24px !important;
+    }
+  }
+}

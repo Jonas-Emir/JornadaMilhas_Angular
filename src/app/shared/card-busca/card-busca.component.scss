@@ -1,21 +1,187 @@
-.card-busca {
-  max-width: 320px;
-  background-color: #FEF7FF;
-  border-radius: 12px;
-  button {
-    width: 100%;
-    margin: 0 16px 48px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
-  ul {
-    list-style: none;
-    padding: 0;
-    li {
-      margin: 12px;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 32px;
-      color: #1D1B20;
-      text-align: center;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-busca {
+  animation: fadeInUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 420px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+
+  .image-wrapper {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .classe-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(98, 0, 238, 0.85);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(2px);
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #d8b4fe;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
+  mat-card-content {
+    flex-grow: 1;
+    padding: 16px 20px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .destino-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-left: -4px;
+
+        .icon-location {
+          color: #ef4444;
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+        }
+
+        .destino-nome {
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          font-size: 20px;
+          color: #1e1b4b;
+        }
+      }
+
+      .origem-wrapper {
+        font-size: 13px;
+        color: #64748b;
+        
+        strong {
+          color: #334155;
+        }
+      }
+    }
+
+    .detalhes-simplificados {
+      display: flex;
+      gap: 16px;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 10px 0;
+
+      .detalhe-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #475569;
+
+        mat-icon {
+          font-size: 16px;
+          width: 16px;
+          height: 16px;
+          color: #6200ee;
+        }
+
+        span {
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .preco-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 4px;
+
+      .preco-label {
+        font-size: 11px;
+        color: #94a3b8;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .preco-valor {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        color: #6200ee;
+        line-height: 1.1;
+      }
+    }
+  }
+
+  mat-card-actions {
+    padding: 8px 20px 20px;
+
+    button {
+      width: 100%;
+      height: 42px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      border-radius: 24px;
+      background-color: #6200ee;
+      color: white;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+
+      &:hover {
+        background-color: #4b00b0;
+      }
+
+      .btn-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+      }
     }
   }
 }
