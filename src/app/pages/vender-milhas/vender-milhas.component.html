@@ -1,0 +1,81 @@
+<section class="venda-milhas-page">
+  <app-banner
+    src="assets/imagens/banner-homepage-rodape.png"
+    alt="Banner Venda de Milhas"
+  ></app-banner>
+
+  <app-container>
+    <div class="venda-wrapper">
+      <div class="venda-form-container">
+        <h2>Simulador de Venda de Milhas</h2>
+        <p class="subtitle font-poppins">Descubra quanto vale suas milhas acumuladas e faça sua cotação na hora.</p>
+        
+        <form [formGroup]="vendaForm" (ngSubmit)="salvarVenda()" class="venda-form">
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="input-full">
+              <mat-label>Programa de Fidelidade</mat-label>
+              <mat-select formControlName="programa">
+                <mat-option value="smiles">Smiles (Gol)</mat-option>
+                <mat-option value="latam">LATAM Pass (LATAM)</mat-option>
+                <mat-option value="azul">TudoAzul (Azul)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="input-full">
+              <mat-label>Quantidade de Milhas</mat-label>
+              <input matInput type="number" step="1000" placeholder="Ex: 10000" formControlName="quantidade">
+              <span matSuffix>milhas</span>
+            </mat-form-field>
+          </div>
+
+          <div class="cotacao-box">
+            <span class="label">Valor Estimado a Receber:</span>
+            <span class="valor">{{ valorTotal | currency:'BRL':'symbol':'1.2-2' }}</span>
+            <span class="taxa-info">*Cotação baseada nos valores vigentes do dia.</span>
+          </div>
+
+          <hr class="divider">
+
+          <h3>Dados de Recebimento</h3>
+          
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="input-full">
+              <mat-label>Nome Completo</mat-label>
+              <input matInput placeholder="Digite seu nome" formControlName="nome">
+            </mat-form-field>
+          </div>
+
+          <button type="submit" mat-flat-button color="primary" class="submit-btn" [disabled]="vendaForm.invalid">
+            <mat-icon>monetization_on</mat-icon> SIMULAR VENDA DE MILHAS
+          </button>
+        </form>
+      </div>
+
+      <!-- Vendas Recentes Section -->
+      <div class="historico-vendas-container" *ngIf="vendasRecentes.length > 0">
+        <div class="historico-header">
+          <h3>Vendas Simuladas nesta Sessão</h3>
+          <button mat-button color="warn" (click)="limparHistorico()">
+            <mat-icon>delete_sweep</mat-icon> LIMPAR
+          </button>
+        </div>
+
+        <div class="vendas-lista">
+          <div class="venda-card animate-card" *ngFor="let v of vendasRecentes">
+            <div class="v-topo">
+              <span class="v-programa">{{ obterNomePrograma(v.programa) }}</span>
+              <span class="v-valor">{{ v.valorTotal | currency:'BRL':'symbol':'1.2-2' }}</span>
+            </div>
+            <div class="v-detalhes">
+              <span>Quantidade: <strong>{{ v.quantidade | number }} milhas</strong></span> <br>
+              <span>Beneficiário: {{ v.nome }}</span>
+            </div>
+            <div class="v-data">Cotação em: {{ v.dataVenda | date:'dd/MM/yyyy HH:mm' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-container>
+</section>

@@ -29,6 +29,9 @@ import { BotaoControleComponent } from './shared/botao-controle/botao-controle.c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DetalhesModalComponent } from './shared/modal/detalhes-modal.component';
+import { ComoFuncionaModalComponent } from './shared/modal/como-funciona-modal.component';
+import { VenderMilhasComponent } from './pages/vender-milhas/vender-milhas.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import { DetalhesModalComponent } from './shared/modal/detalhes-modal.component'
     FormBuscaComponent,
     ModalComponent,
     BotaoControleComponent,
-    DetalhesModalComponent
+    DetalhesModalComponent,
+    ComoFuncionaModalComponent,
+    VenderMilhasComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,8 @@ import { DetalhesModalComponent } from './shared/modal/detalhes-modal.component'
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

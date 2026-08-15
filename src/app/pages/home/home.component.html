@@ -9,10 +9,10 @@
         <h1>Transforme suas Milhas em Dinheiro</h1>
         <p>Venda suas milhas acumuladas com a melhor cotação do mercado e receba via Pix em minutos de forma rápida e segura!</p>
         <div class="hero-actions">
-          <button mat-flat-button color="accent" class="cta-button">
+          <button mat-flat-button color="accent" class="cta-button" routerLink="/vender-milhas">
             <mat-icon>monetization_on</mat-icon> VENDER MILHAS AGORA
           </button>
-          <button mat-stroked-button class="cta-secondary">
+          <button type="button" mat-stroked-button class="cta-secondary" (click)="abrirComoFunciona()">
             <mat-icon>info</mat-icon> COMO FUNCIONA
           </button>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FlightService, Voo, Simulacao } from '../../core/services/flight.service';
 import { DetalhesModalComponent } from '../../shared/modal/detalhes-modal.component';
+import { ComoFuncionaModalComponent } from '../../shared/modal/como-funciona-modal.component';
 
 @Component({
   selector: 'app-home',
@@ -89,9 +90,16 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  abrirComoFunciona(): void {
+    this.dialog.open(ComoFuncionaModalComponent, {
+      width: '450px'
+    });
+  }
+
   limparHistorico(): void {
     this.flightService.limparSimulacoes();
     this.carregarSimulacoes();
   }
 }
+
 
