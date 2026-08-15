@@ -1,6 +1,6 @@
 .app-footer {
-  background-color: #f1f5f9;
-  border-top: 1px solid #e2e8f0;
+  background-color: #11102f;
+  border-top: 1px solid #1a1947;
   padding: 48px 0;
   font-family: 'Poppins', sans-serif;
 
@@ -29,10 +29,11 @@
       height: 32px;
       object-fit: contain;
       margin-bottom: 8px;
+      filter: brightness(0) invert(1);
     }
 
     li {
-      color: #64748b;
+      color: #94a3b8;
       font-size: 14px;
       max-width: 400px;
       line-height: 1.6;
@@ -45,23 +46,25 @@
     gap: 12px;
 
     li {
-      color: #334155;
+      color: #e2e8f0;
       font-weight: 600;
       font-size: 15px;
 
       button {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         margin-right: 8px;
         transition: all 0.2s ease;
+        color: white;
 
         img {
           width: 20px;
           height: 20px;
+          filter: brightness(0) invert(1);
         }
 
         &:hover {
-          background-color: #e2e8f0;
+          background-color: rgba(255, 255, 255, 0.15);
           transform: translateY(-2px);
         }
       }
