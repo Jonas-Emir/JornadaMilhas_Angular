@@ -13,23 +13,7 @@ export class HomeComponent implements OnInit {
   voos: Voo[] = [];
   simulacoes: Simulacao[] = [];
   
-  depoimentos: any[] = [
-    {
-      depoimento: 'A Jornada Milhas tornou minha viagem de férias inesquecível! Comprei passagens para Paris com um preço imbatível e o suporte foi excelente do início ao fim.',
-      autoria: 'Mariana Faustino',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop'
-    },
-    {
-      depoimento: 'Excelente experiência de voo! O atendimento personalizado e o processo de simulação de passagens funcionaram de forma clara e transparente. Recomendo muito!',
-      autoria: 'Rodrigo Silva',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop'
-    },
-    {
-      depoimento: 'Melhor portal de turismo. Consegui planejar minha viagem de lua de mel para Veneza economizando muito. O sistema de simulação de reserva ajudou demais no planejamento.',
-      autoria: 'Carla Mendes',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop'
-    }
-  ];
+  depoimentos: any[] = [];
 
   // Search parameters to pass to details dialog
   adultos: number = 1;
@@ -47,6 +31,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.carregarVoos();
     this.carregarSimulacoes();
+    this.carregarDepoimentos();
   }
 
   carregarVoos(): void {
@@ -57,6 +42,13 @@ export class HomeComponent implements OnInit {
 
   carregarSimulacoes(): void {
     this.simulacoes = this.flightService.getSimulacoes();
+  }
+
+  carregarDepoimentos(): void {
+    this.flightService.getDepoimentos().subscribe({
+      next: res => this.depoimentos = res,
+      error: err => console.error('Erro ao carregar depoimentos', err)
+    });
   }
 
   onPesquisar(parametros: any): void {
