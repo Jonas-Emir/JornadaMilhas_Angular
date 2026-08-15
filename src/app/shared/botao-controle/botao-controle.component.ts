@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-botao-controle',
@@ -9,4 +9,11 @@ export class BotaoControleComponent {
   @Input() operacao: 'incrementar' | 'decrementar' = "incrementar";
   @Input() src = '';
   @Input() alt = '';
+
+  @Output() clickControle = new EventEmitter<void>();
+
+  onClick() {
+    this.clickControle.emit();
+  }
 }
+

@@ -6,40 +6,41 @@
         <li><strong>Adultos</strong></li>
         <li>(Acima de 12 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <app-botao-controle operacao="decrementar" (clickControle)="alterarAdultos(-1)"></app-botao-controle>
+          <span>{{ adultos }}</span>
+          <app-botao-controle operacao="incrementar" (clickControle)="alterarAdultos(1)"></app-botao-controle>
         </li>
       </ul>
       <ul>
         <li><strong>Crianças</strong></li>
         <li>(Entre 2 e 11 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <app-botao-controle operacao="decrementar" (clickControle)="alterarCriancas(-1)"></app-botao-controle>
+          <span>{{ criancas }}</span>
+          <app-botao-controle operacao="incrementar" (clickControle)="alterarCriancas(1)"></app-botao-controle>
         </li>
       </ul>
       <ul>
         <li><strong>Bebês</strong></li>
         <li>(Até 2 anos)</li>
         <li>
-          <app-botao-controle operacao="decrementar"></app-botao-controle>
-          <span>1</span>
-          <app-botao-controle operacao="incrementar"></app-botao-controle>
+          <app-botao-controle operacao="decrementar" (clickControle)="alterarBebes(-1)"></app-botao-controle>
+          <span>{{ bebes }}</span>
+          <app-botao-controle operacao="incrementar" (clickControle)="alterarBebes(1)"></app-botao-controle>
         </li>
       </ul>
     </div>
     <div class="selecao-categoria">
       <p><strong>Categoria</strong></p>
-      <mat-chip-listbox aria-label="Seleção de passagens">
-        <mat-chip-option selected>1 adulto</mat-chip-option>
-        <mat-chip-option>Econômica</mat-chip-option>
+      <mat-chip-listbox aria-label="Seleção de categoria">
+        <mat-chip-option [selected]="categoria === 'Econômica'" (click)="selecionarCategoria('Econômica')">Econômica</mat-chip-option>
+        <mat-chip-option [selected]="categoria === 'Executiva'" (click)="selecionarCategoria('Executiva')">Executiva</mat-chip-option>
       </mat-chip-listbox>
     </div>
   </div>
   <div mat-dialog-actions class="modal-actions">
-    <button color="primary" mat-flat-button mat-dialog-close>BUSCAR</button>
+    <button color="primary" mat-flat-button (click)="salvar()">APLICAR</button>
   </div>
 </section>
+
 

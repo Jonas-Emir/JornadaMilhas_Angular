@@ -1,21 +1,57 @@
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  .mat-toolbar {
+    background-color: #1a1843 !important;
+    color: white;
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 36px;
+      object-fit: contain;
+    }
+  }
 
   button {
-    margin: 0 16px;
+    margin: 0 8px;
+    font-weight: 600;
+    
+    &.mat-mdc-button {
+      color: rgba(255, 255, 255, 0.85);
+      
+      &:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+      }
+    }
   }
 
   .spacer {
     flex: 1 1 auto;
   }
 
-  .mat-toolbar {
-    background-color: black;
-    color: white;
-    padding: 0 256px;
+  ::ng-deep .mat-mdc-raised-button.mat-primary {
+    background-color: #6200ee !important;
+    box-shadow: 0 4px 6px rgba(98, 0, 238, 0.3) !important;
+
+    &:hover {
+      background-color: #4b00b0 !important;
+    }
   }
 
-  .mat-mdc-outlined-button:not(:disabled) {
-    border-color: white;
+  ::ng-deep .mat-mdc-outlined-button {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    color: white !important;
+
+    &:hover {
+      border-color: white !important;
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
   }
 }
-

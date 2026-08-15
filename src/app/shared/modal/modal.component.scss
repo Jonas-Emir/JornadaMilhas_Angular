@@ -1,46 +1,131 @@
 .modal {
-  border: 1px solid #1D1B20;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
+  padding: 24px;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+  color: #334155;
+  background-color: #ffffff;
+
   h1 {
-    font-size: 32px;
-    padding: 12px;
+    margin: 0 0 24px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1b4b;
   }
+
   .selecao-idade {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+
     ul {
-      list-style-type: none;
-      margin: 0 0 0 -1em;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      align-items: center;
+      list-style: none;
       padding: 0;
+      margin: 0;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
       li {
-        margin-bottom: 10px;
-        margin: 12px;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 20px;
-        color: #1D1B20;
-        text-align: start;
-        padding: 0;
-        span {
-          vertical-align: middle;
-          padding: 0 12px;
+        font-size: 14px;
+        
+        strong {
+          color: #1e293b;
+          font-size: 15px;
+        }
+
+        &:nth-child(2) {
+          color: #64748b;
+          font-size: 12px;
+        }
+
+        &:last-child {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+
+          span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 16px;
+            text-align: center;
+          }
+
+          app-botao-controle {
+            ::ng-deep button {
+              width: 32px !important;
+              height: 32px !important;
+              background-color: #f1f5f9 !important;
+              border-radius: 50% !important;
+              padding: 0 !important;
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+              box-shadow: none !important;
+
+              img {
+                width: 20px;
+                height: 20px;
+              }
+
+              &:hover {
+                background-color: #e2e8f0 !important;
+              }
+            }
+          }
         }
       }
     }
   }
+
   .selecao-categoria {
-    margin-top: 32px;
-    color: #1D1B20;
-  }
-  .modal-actions {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    button {
-      margin: 0 8px;
-      width: 100%;
+    margin-bottom: 32px;
+
+    p {
+      margin: 0 0 12px 0;
+      font-size: 15px;
+      color: #1e293b;
     }
+
+    ::ng-deep .mat-chip-listbox {
+      .mat-mdc-chip-option {
+        --mdc-chip-elevated-container-color: #ffffff;
+        --mdc-chip-selected-elevated-container-color: #f3e8ff;
+        --mdc-chip-label-text-color: #475569;
+        --mdc-chip-selected-label-text-color: #6200ee;
+        border: 1px solid #e2e8f0;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+        border-radius: 20px !important;
+        
+        &.mat-mdc-chip-selected {
+          border-color: #c084fc;
+        }
+      }
+    }
+  }
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  margin: 0 -24px -24px -24px;
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+
+  button {
+    font-weight: 600;
+    border-radius: 20px !important;
+    padding: 0 24px !important;
+    height: 40px;
   }
 }
