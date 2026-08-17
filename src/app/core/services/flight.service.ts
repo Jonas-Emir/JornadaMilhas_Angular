@@ -36,26 +36,74 @@ export class FlightService {
 
   getVoos(): Observable<Voo[]> {
     return this.http.get<any[]>('assets/data/voos.json').pipe(
-      map(voos => voos.map(v => ({
-        ...v,
-        dataIda: new Date(v.dataIda),
-        dataVolta: v.dataVolta ? new Date(v.dataVolta) : undefined
-      })))
+      map(voos => voos.map(v => {
+        // Parse date strings to local midnight Date objects to avoid timezone offset issues
+        const idaParts = v.dataIda.split('-');
+        const dataIda = new Date(Number(idaParts[0]), Number(idaParts[1]) - 1, Number(idaParts[2]));
+        
+        let dataVolta = undefined;
+        if (v.dataVolta) {
+          const voltaParts = v.dataVolta.split('-');
+          dataVolta = new Date(Number(voltaParts[0]), Number(voltaParts[1]) - 1, Number(voltaParts[2]));
+        }
+
+        return {
+          ...v,
+          dataIda,
+          dataVolta
+        };
+      }))
     );
   }
 
-  getVoosFiltrados(origem?: string, destino?: string): Observable<Voo[]> {
+  getVoosFiltrados(filtros: {
+    origem?: string;
+    destino?: string;
+    dataIda?: Date | null;
+    dataVolta?: Date | null;
+    categoria?: string;
+    tipo?: string;
+  }): Observable<Voo[]> {
     return this.getVoos().pipe(
       map(voos => {
         let list = voos;
-        if (origem) {
-          const origNormalized = origem.trim().toLowerCase();
+
+        if (filtros.origem) {
+          const origNormalized = filtros.origem.trim().toLowerCase();
           list = list.filter(v => v.origem.toLowerCase().includes(origNormalized));
         }
-        if (destino) {
-          const destNormalized = destino.trim().toLowerCase();
+
+        if (filtros.destino) {
+          const destNormalized = filtros.destino.trim().toLowerCase();
           list = list.filter(v => v.destino.toLowerCase().includes(destNormalized));
         }
+
+        if (filtros.categoria) {
+          const catNormalized = filtros.categoria.trim().toLowerCase();
+          list = list.filter(v => v.classe.toLowerCase() === catNormalized);
+        }
+
+        if (filtros.dataIda) {
+          const dataBusca = new Date(filtros.dataIda);
+          list = list.filter(v => {
+            const dataVoo = new Date(v.dataIda);
+            return dataVoo.getFullYear() === dataBusca.getFullYear() &&
+                   dataVoo.getMonth() === dataBusca.getMonth() &&
+                   dataVoo.getDate() === dataBusca.getDate();
+          });
+        }
+
+        if (filtros.tipo === 'ida-volta' && filtros.dataVolta) {
+          const dataBuscaVolta = new Date(filtros.dataVolta);
+          list = list.filter(v => {
+            if (!v.dataVolta) return false;
+            const dataVooVolta = new Date(v.dataVolta);
+            return dataVooVolta.getFullYear() === dataBuscaVolta.getFullYear() &&
+                   dataVooVolta.getMonth() === dataBuscaVolta.getMonth() &&
+                   dataVooVolta.getDate() === dataBuscaVolta.getDate();
+          });
+        }
+
         return list;
       })
     );

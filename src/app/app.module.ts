@@ -33,6 +33,8 @@ import { DetalhesModalComponent } from './shared/modal/detalhes-modal.component'
 import { ComoFuncionaModalComponent } from './shared/modal/como-funciona-modal.component';
 import { VenderMilhasComponent } from './pages/vender-milhas/vender-milhas.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
+import { AuthModalComponent } from './shared/modal/auth-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MatSelectModule } from '@angular/material/select';
     BotaoControleComponent,
     DetalhesModalComponent,
     ComoFuncionaModalComponent,
-    VenderMilhasComponent
+    VenderMilhasComponent,
+    AuthModalComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

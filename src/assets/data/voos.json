@@ -115,5 +115,44 @@
     "ciaAerea": "United Airlines",
     "duracao": "9h 30min",
     "bagagem": "Mochila + Bagagem de mão + Bagagem despachada"
+  },
+  {
+    "id": 10,
+    "origem": "São Paulo",
+    "destino": "Paris",
+    "preco": 3800,
+    "imagem": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=600&auto=format&fit=crop",
+    "dataIda": "2026-10-05",
+    "dataVolta": "2026-10-18",
+    "classe": "Executiva",
+    "ciaAerea": "Air France",
+    "duracao": "11h 15min",
+    "bagagem": "Mochila + Bagagem de mão + 2 Bagagens despachadas"
+  },
+  {
+    "id": 11,
+    "origem": "Rio de Janeiro",
+    "destino": "Orlando",
+    "preco": 4200,
+    "imagem": "https://images.unsplash.com/photo-1597466765990-64ad1c35dafc?q=80&w=600&auto=format&fit=crop",
+    "dataIda": "2026-11-12",
+    "dataVolta": "2026-11-26",
+    "classe": "Executiva",
+    "ciaAerea": "American Airlines",
+    "duracao": "8h 45min",
+    "bagagem": "Mochila + Bagagem de mão + 2 Bagagens despachadas"
+  },
+  {
+    "id": 12,
+    "origem": "São Paulo",
+    "destino": "Roma",
+    "preco": 4500,
+    "imagem": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=600&auto=format&fit=crop",
+    "dataIda": "2026-09-15",
+    "dataVolta": "2026-09-30",
+    "classe": "Executiva",
+    "ciaAerea": "ITA Airways",
+    "duracao": "11h 50min",
+    "bagagem": "Mochila + Bagagem de mão + 2 Bagagens despachadas"
   }
 ]

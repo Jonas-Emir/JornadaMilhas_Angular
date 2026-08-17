@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.categoria = parametros.categoria || 'Econômica';
     this.searchExecuted = true;
 
-    this.flightService.getVoosFiltrados(parametros.origem, parametros.destino).subscribe(res => {
+    this.flightService.getVoosFiltrados(parametros).subscribe(res => {
       this.voos = res;
     });
   }

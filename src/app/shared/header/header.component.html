@@ -2,10 +2,53 @@
   <mat-toolbar>
     <img src="assets/imagens/logo.png" alt="Logo da aplicação Jornada" routerLink="/" style="cursor: pointer;">
     <span class="spacer"></span>
-    <button mat-button routerLink="/vender-milhas">Vender milhas</button>
-    <button mat-button (click)="abrirSobre()">Sobre</button>
-    <button mat-raised-button color="primary">CADASTRE-SE</button>
-    <button mat-stroked-button>LOGIN</button>
+    
+    <div class="nav-desktop">
+      <button mat-button routerLink="/vender-milhas">Vender milhas</button>
+      <button mat-button (click)="abrirSobre()">Sobre</button>
+      <button mat-raised-button color="primary" (click)="abrirAuth('cadastro')">CADASTRE-SE</button>
+      <button mat-stroked-button (click)="abrirAuth('login')">LOGIN</button>
+    </div>
+    
+    <div class="nav-mobile">
+      <button mat-icon-button (click)="toggleMenu()" aria-label="Menu de navegação">
+        <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>
+
+  <!-- Gaveta Mobile Drawer -->
+  <div class="mobile-drawer-overlay" [class.is-open]="isMenuOpen" (click)="toggleMenu()"></div>
+  <div class="mobile-drawer" [class.is-open]="isMenuOpen">
+    <div class="drawer-header">
+      <img src="assets/imagens/logo.png" alt="Logo da aplicação Jornada" class="drawer-logo" routerLink="/" (click)="isMenuOpen = false">
+      <button mat-icon-button (click)="toggleMenu()" aria-label="Fechar menu">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="drawer-content">
+      <nav class="drawer-nav">
+        <a class="drawer-link" routerLink="/vender-milhas" routerLinkActive="active" (click)="isMenuOpen = false">
+          <mat-icon>monetization_on</mat-icon>
+          <span>Vender milhas</span>
+        </a>
+        <a class="drawer-link" href="javascript:void(0)" (click)="abrirSobre(); isMenuOpen = false">
+          <mat-icon>info</mat-icon>
+          <span>Sobre</span>
+        </a>
+        
+        <div class="drawer-divider"></div>
+        
+        <div class="drawer-actions">
+          <button mat-flat-button color="primary" class="drawer-btn primary-btn" (click)="abrirAuth('cadastro')">
+            CADASTRE-SE
+          </button>
+          <button mat-stroked-button class="drawer-btn" (click)="abrirAuth('login')">
+            LOGIN
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
 </header>
 
